@@ -7,11 +7,12 @@ class App extends Component {
     super(props);
     this.state = {
       date: 0,
-      count: 0
+      count: 0,
+      timePassed: Date.now(),
     };
 
   };
-  handleClick = () => {
+  counter = () => {
     this.setState({
       count: this.state.count + 1
     });
@@ -21,29 +22,42 @@ class App extends Component {
     this.setState({count: 0});
   }
 
+
   render() {
+    const containerStyle = {
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexDirection: 'row'
+    }
     const buttonStyle = {
-      width: '100%',
-      height: 'auto',
-      backgroundColor: 'green',
-      border: 'none',
-      fontSize: '18em'
+
+      width: '50%',
+      height: '100%',
+
+      backgroundColor: '#C0CA33',
+      fontSize: '5em'
     };
     const counterStyle = {
-      width: '100%',
-      height: 'auto',
-      backgroundColor: 'blue',
-      border: 'none',
+
+      width: '50%',
+      height: '100%',
+      backgroundColor: 'teal',
       fontSize: '2em'
     };
+    const dateStyle = {
+      fontSize: '1em'
+    }
     return (
       <div className = "App" >
-          <div className = "App-header" >
-            <h2> Timer & Counter </h2>
-          </div >
-        <div style = {counterStyle} > {Date.now() - this.state.date} </div>
-        <button onClick = { this.handleClick } style = { buttonStyle } > { this.state.count } </button>
-        <button onClick = {this.start} style = {buttonStyle}> Start </button>
+        <div className = "container">
+
+          <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
+          <div onClick = {this.start} style = {counterStyle}>
+
+            start <p style = {dateStyle}>{((Date.now() - this.state.date)/100).toFixed(0)}</p>
+        </div>
+        </div>
+
       </div >
       );
   }
