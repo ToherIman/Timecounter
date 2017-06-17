@@ -26,35 +26,33 @@ class App extends Component {
   render() {
     const containerStyle = {
       display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'row'
+      minHeight: '600px',
+      alignItems: 'center', /* Vertical center alignment */
+      justifyContent: 'center', /* Horizontal center alignment */
     }
     const buttonStyle = {
-
+      verticalAlign: 'middle',
       width: '50%',
-      height: '100%',
-
+      minHeight: '300px',
       backgroundColor: '#C0CA33',
-      fontSize: '5em'
+      fontSize: '5em',
+
     };
     const counterStyle = {
-
+      verticalAlign: 'middle',
       width: '50%',
-      height: '100%',
+      minHeight: '300px',
       backgroundColor: 'teal',
       fontSize: '2em'
     };
-    const dateStyle = {
-      fontSize: '1em'
-    }
+
     return (
       <div className = "App" >
-        <div className = "container">
+        <div className = "container" style={containerStyle}>
 
           <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
           <div onClick = {this.start} style = {counterStyle}>
-
-            start <p style = {dateStyle}>{((Date.now() - this.state.date)/100).toFixed(0)}</p>
+        {((Date.now() - this.state.date)/100).toFixed(0)}
         </div>
         </div>
 
