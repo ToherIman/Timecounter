@@ -52,7 +52,7 @@ class App extends Component {
 
           <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
           <div onClick = {this.start} style = {counterStyle}>
-        {((Date.now() - this.state.date)/100).toFixed(0)}
+        {((Date.now() - this.state.date)/100).toFixed(0)} sec
         </div>
         </div>
 
