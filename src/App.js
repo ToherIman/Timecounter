@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       date: 0,
       count: 0,
-      timePassed: Date.now(),
+      timePassed: '0',
     };
 
   };
@@ -20,6 +20,9 @@ class App extends Component {
   start = () => {
     this.setState({date: new Date()});
     this.setState({count: 0});
+  }
+  timer = () => {
+    this.setState({timePassed: ((Date.now() - this.state.date)/100).toFixed(0)})
   }
 
 
@@ -52,7 +55,7 @@ class App extends Component {
 
           <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
           <div onClick = {this.start} style = {counterStyle}>
-        {((Date.now() - this.state.date)/100).toFixed(0)} sec
+        {this.state.timePassed} sec
         </div>
         </div>
 
