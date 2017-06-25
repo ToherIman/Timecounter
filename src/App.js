@@ -25,7 +25,7 @@ class App extends Component {
     this.setState({timePassed: ((Date.now() - this.state.date)/100).toFixed(0)})
   }
 
-
+  //here to add clock element
   render() {
     const containerStyle = {
       display: 'flex',
