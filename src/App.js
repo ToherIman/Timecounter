@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import Clock from './Clock.js';
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class App extends Component {
     this.state = {
       date: 0,
       count: 0,
-      timePassed: '0',
+      timePassed: 0,
     };
 
   };
@@ -18,8 +19,8 @@ class App extends Component {
     });
   };
   start = () => {
-    this.setState({date: new Date()});
-    this.setState({count: 0});
+    this.setState({date: Date.now()});
+  //  this.setState({count: 0});
   }
   timer = () => {
     this.setState({timePassed: ((Date.now() - this.state.date)/100).toFixed(0)})
@@ -55,13 +56,16 @@ class App extends Component {
 
           <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
           <div onClick = {this.start} style = {counterStyle}>
-        {this.state.timePassed} sec
+        {new Date(this.state.date).toLocaleTimeString()} <Clock />
         </div>
         </div>
 
       </div >
       );
+
   }
 }
+
+
 
 export default App;
