@@ -7,9 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: 0,
       count: 0,
-      timePassed: 0,
+      timer: 0,
     };
 
   };
@@ -18,12 +17,22 @@ class App extends Component {
       count: this.state.count + 1
     });
   };
-  start = () => {
-    this.setState({date: Date.now()});
-  //  this.setState({count: 0});
+
+  componentDidMount() {
+      this.timerID = setInterval(
+        () => this.tick(),
+        1000
+      );
   }
-  timer = () => {
-    this.setState({timePassed: ((Date.now() - this.state.date)/100).toFixed(0)})
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  tick() {
+    if (this.state.count > 0) {
+      this.setState({
+        timer: this.state.timer +1
+      });
+    }
   }
 
   //here to add clock element
@@ -52,15 +61,11 @@ class App extends Component {
 
     return (
       <div className = "App" >
+        <Clock />
         <div className = "container" style={containerStyle}>
-
           <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
-          <div onClick = {this.start} style = {counterStyle}>
-        {new Date(this.state.date).toLocaleTimeString()} <Clock />
-      {new Date(Date.now() - this.state.date).toTimeString()}
+          <div onClick = {this.start} style = {counterStyle}>{this.state.timer}</div>
         </div>
-        </div>
-
       </div >
       );
 
