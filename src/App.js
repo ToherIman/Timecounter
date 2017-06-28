@@ -56,11 +56,13 @@ class App extends Component {
   //here to add clock element
   render() {
     const containerStyle = {
+      height:'100vh',
       display: 'flex',
       minHeight: '600px',
       alignItems: 'center', /* Vertical center alignment */
     };
     const buttonStyle = {
+      height:'100%',
       width: '50%',
       minHeight: '300px',
       backgroundColor: '#C0CA33',
@@ -71,6 +73,7 @@ class App extends Component {
 
     };
     const counterStyle = {
+      height:'100%',
       width: '50%',
       minHeight: '300px',
       backgroundColor: 'teal',
@@ -82,7 +85,7 @@ class App extends Component {
 
     return (
       <div className = "App" >
-        <Clock />
+
         <div className = "container" style={containerStyle}>
           <div onClick = {this.counter} style = {buttonStyle}>
             <div>{this.state.count}</div>
