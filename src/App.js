@@ -12,9 +12,16 @@ class App extends Component {
     };
 
   };
+
   counter = () => {
     this.setState({
       count: this.state.count + 1
+    });
+  };
+
+  start = () => {
+    this.setState({
+      timer: 0,
     });
   };
 
@@ -34,11 +41,17 @@ class App extends Component {
       });
     }
   }
-  start = () => {
-    this.setState({
-      timer: 0
-    });
+  format(time) {
+    if (time > 360) {
+      return (time/360).toFixed(0)+" h "+(time/60).toFixed(0) +" m "+ time%60 +" s"
+    }
+    if (time > 60) {
+      return (time/60).toFixed(0) +" m "+ time%60 +" s"
+    } else {
+      return time + " s"
+    }
   }
+
 
   //here to add clock element
   render() {
@@ -69,7 +82,7 @@ class App extends Component {
         <Clock />
         <div className = "container" style={containerStyle}>
           <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
-          <div onClick = {this.start} style = {counterStyle}>{this.state.timer}</div>
+          <div onClick = {this.start} style = {counterStyle}>{this.format(this.state.timer)}</div>
         </div>
       </div >
       );
