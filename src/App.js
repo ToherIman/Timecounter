@@ -59,30 +59,37 @@ class App extends Component {
       display: 'flex',
       minHeight: '600px',
       alignItems: 'center', /* Vertical center alignment */
-      justifyContent: 'center', /* Horizontal center alignment */
-    }
+    };
     const buttonStyle = {
-      verticalAlign: 'middle',
       width: '50%',
       minHeight: '300px',
       backgroundColor: '#C0CA33',
       fontSize: '5em',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
 
     };
     const counterStyle = {
-      verticalAlign: 'middle',
       width: '50%',
       minHeight: '300px',
       backgroundColor: 'teal',
-      fontSize: '2em'
+      fontSize: '4em',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     };
 
     return (
       <div className = "App" >
         <Clock />
         <div className = "container" style={containerStyle}>
-          <div onClick = {this.counter} style = { buttonStyle } > { this.state.count } </div>
-          <div onClick = {this.start} style = {counterStyle}>{this.format(this.state.timer)}</div>
+          <div onClick = {this.counter} style = {buttonStyle}>
+            <div>{this.state.count}</div>
+          </div>
+          <div onClick = {this.start} style = {counterStyle}>
+            <div>{this.format(this.state.timer)}</div>
+          </div>
         </div>
       </div >
       );
