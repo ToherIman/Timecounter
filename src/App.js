@@ -34,6 +34,11 @@ class App extends Component {
       });
     }
   }
+  start = () => {
+    this.setState({
+      timer: 0
+    });
+  }
 
   //here to add clock element
   render() {
